@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+include(../libirc/libirc.pro)
+
 QT       += network
 
 QT       -= gui
@@ -13,12 +15,8 @@ TEMPLATE = lib
 
 DEFINES += LIBIRCCLIENT_LIBRARY
 
-SOURCES += user.cpp \
+SOURCES += \
     irceventhandler.cpp \
-    channel.cpp \
-    mode.cpp \
-    server.cpp \
-    network.cpp \
     parser.cpp \
     generic.cpp
 
@@ -37,8 +35,3 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
-
-unix:!macx: LIBS += -L$$PWD/../build-libirc-Desktop-Debug/ -llibirc
-
-INCLUDEPATH += $$PWD/../build-libirc-Desktop-Debug
-DEPENDPATH += $$PWD/../build-libirc-Desktop-Debug
